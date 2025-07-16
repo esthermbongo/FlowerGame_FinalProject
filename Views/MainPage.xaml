@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FlowerGame.Views.MainPage"
+    x:Name="RootPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:FlowerGame.Model"
+    xmlns:viewmodel="clr-namespace:FlowerGame.ViewModel"
+    xmlns:converters="clr-namespace:FlowerGame.Converters"
+    x:DataType="viewmodel:WordsViewModel"
+    Title="🌸 Flower Hangman 🌸"
+    BackgroundColor="#FFE4E1">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:LanguageToColorConverter x:Key="LanguageToColorConverter" />
+            <converters:LevelToColorConverter x:Key="LevelToColorConverter" />
+            <converters:CategoryToColorConverter x:Key="CategoryToColorConverter" />
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Game Status and Word Display -->
+            <VerticalStackLayout Spacing="16">
+                <Label FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       Text="{Binding GameStatus}" />
+
+                <Label FontSize="40"
+                       HorizontalOptions="Center"
+                       Text="{Binding Spotlight}"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       FontFamily="Courier New" />
+
+                <Label FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding Message}" />
+            </VerticalStackLayout>
+
+            <!-- Game Setup Controls -->
+            <VerticalStackLayout Spacing="16">
+                <Label Text="Choose Language:" FontSize="16" HorizontalTextAlignment="Center" />
+                <Frame BackgroundColor="#FFB6C1" CornerRadius="15" Padding="10" HasShadow="True">
+                    <Picker ItemsSource="{Binding AvailableLanguages}" 
+                            SelectedItem="{Binding SelectedLanguage}"
+                            Title="Select Language" />
+                </Frame>
+
+                <Label Text="Choose Level:" FontSize="16" HorizontalTextAlignment="Center" />
+                <Frame BackgroundColor="#FFB6C1" CornerRadius="15" Padding="10" HasShadow="True">
+                    <Picker ItemsSource="{Binding AvailableLevels}" 
+                            SelectedItem="{Binding SelectedLevel}"
+                            Title="Select Level" />
+                </Frame>
+
+                <Label Text="Choose Category:" FontSize="16" HorizontalTextAlignment="Center" />
+                <Frame BackgroundColor="#FFB6C1" CornerRadius="15" Padding="10" HasShadow="True">
+                    <Picker ItemsSource="{Binding AvailableCategories}" 
+                            SelectedItem="{Binding SelectedCategory}"
+                            Title="Select Category" />
+                </Frame>
+            </VerticalStackLayout>
+
+            <!-- Start Game Button at the Bottom -->
+            <Button Text="🌸 Start Game 🌸" 
+                    Command="{Binding StartGameCommand}" 
+                    IsEnabled="{Binding CanStartGame}"
+                    BackgroundColor="#FF69B4" 
+                    TextColor="White" 
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    Margin="20" />
+
+            <!-- Play Again Button (only visible when game is finished) -->
+            <Button Text="Play Again"
+                    HorizontalOptions="Center"
+                    WidthRequest="120"
+                    Command="{Binding StartGameCommand}"
+                    CommandParameter="{Binding Source={x:Reference RootPage}, Path=BindingContext.GetStartGameParameters}"
+                    IsVisible="{Binding ShowPlayAgain}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

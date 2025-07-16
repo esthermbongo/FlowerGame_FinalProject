@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:FlowerGame.Converters"
+             x:Class="FlowerGame.Views.GamePage"
+             Title="🌸 Flower Hangman 🌸"
+             BackgroundColor="#FFE4E1">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Frame BackgroundColor="#FF69B4" CornerRadius="20" Padding="15" HasShadow="True">
+                <Label Text="{Binding Language, StringFormat='🌍 Language: {0}'}"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+            </Frame>
+
+            <Frame BackgroundColor="#FF91A4" CornerRadius="15" Padding="10" HasShadow="True" HorizontalOptions="Center">
+                <HorizontalStackLayout Spacing="5">
+                    <Label Text="💝 Lives:" FontSize="16" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                    <Label Text="{Binding RemainingLives}" FontSize="18" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                    <Label Text="/ 6" FontSize="16" TextColor="White" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Frame x:Name="FlowerContainer" BackgroundColor="White" CornerRadius="25" Padding="20" HasShadow="True" HorizontalOptions="Center" VerticalOptions="Center">
+                <Grid x:Name="FlowerGrid">
+                    <Image x:Name="MainFlowerImage"
+                           Source="{Binding GameState.FlowerImagePath}"
+                           HeightRequest="220"
+                           WidthRequest="220"
+                           Aspect="AspectFit" />
+                    <Grid x:Name="PetalContainer" />
+                </Grid>
+            </Frame>
+
+            <Frame BackgroundColor="#FFB6C1" CornerRadius="20" Padding="20" HasShadow="True">
+                <Label Text="{Binding GameState.DisplayWord}"
+                       FontSize="36"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       CharacterSpacing="15" />
+            </Frame>
+
+            <Button Text="💡 Hint"
+                    Command="{Binding ShowHintCommand}"
+                    IsEnabled="{Binding HintUsed, Converter={StaticResource InvertedBoolConverter}}"
+                    BackgroundColor="#FFD700"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    WidthRequest="100"
+                    HorizontalOptions="Center"
+                    Margin="10" />
+
+            <Frame BackgroundColor="#FFB6C1" CornerRadius="15" Padding="15" HasShadow="True">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Label Text="💔 Wrong Letters:" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                    <Label Text="{Binding WrongLettersDisplay}" FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <FlexLayout Wrap="Wrap"
+                        JustifyContent="SpaceEvenly"
+                        BindableLayout.ItemsSource="{Binding Letters}"
+                        Padding="10"
+                        Margin="0,15">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <Frame BackgroundColor="#FF91A4"
+                               CornerRadius="20"
+                               Padding="0"
+                               Margin="3"
+                               HasShadow="True">
+                            <Button HeightRequest="45"
+                                    WidthRequest="45"
+                                    BackgroundColor="Transparent"
+                                    Text="{Binding .}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.GuessLetterCommand}"
+                                    CommandParameter="{Binding .}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    TextColor="White" />
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+
+            <Button Text="🌸 New Game 🌸"
+                    Command="{Binding NewGameCommand}"
+                    BackgroundColor="#FF69B4"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    Margin="20,10" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,14 @@
+﻿# API Keys and Secrets
+appsettings.json
+appsettings.*.json
+
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+# MAUI Specific
+platforms/
