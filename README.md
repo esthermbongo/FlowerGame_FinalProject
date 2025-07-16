@@ -1,11 +1,11 @@
 ﻿# 🌸 Flower Hangman Game
 
-A cute multilingual word-guessing game built with .NET MAUI! Save your adorable flower by guessing the word before all the petals fall away.
+A cute multilingual word-guessing game built with .NET MAUI! Save your adorable kawaii flower by guessing the word before all the petals fall away.
 
 ## 🎮 Features
 
 - 🌍 **Multi-language support** - Play in English, Spanish, or French with real translation
-- 🌸 **Adorable flower** - Watch cute animations as you play
+- 🌸 **Adorable kawaii flower** - Watch cute animations as you play
 - 💡 **Smart hint system** - Get helpful clues when you're stuck
 - 🎯 **Multiple difficulty levels** - Choose from Easy, Medium, and Hard words
 - 🏷️ **Category selection** - Pick from Animals, Food, Plants, or People
@@ -44,6 +44,9 @@ A cute multilingual word-guessing game built with .NET MAUI! Save your adorable 
 ## 📱 Supported Platforms
 
 - ✅ Windows
+- ✅ Android  
+- ✅ iOS
+- ✅ macOS
 
 ## 🚀 Setup Instructions
 
@@ -53,47 +56,5 @@ A cute multilingual word-guessing game built with .NET MAUI! Save your adorable 
 
 ### Installation
 1. **Clone this repository:**
-git clone https://github.com/YOUR_USERNAME/flower-hangman-game.git
-
-2. **Set up API key:**
-- Copy `appsettings.example.json` to `appsettings.json`
-- Get a free API key from [Microsoft Translator](https://docs.microsoft.com/azure/cognitive-services/translator/)
-- Add your API key to `appsettings.json`:
-```json
-{
-  "TranslationService": {
-    "SubscriptionKey": "YOUR_API_KEY_HERE",
-    "Region": "eastus"
-  }
-}
-
-🌟 What I Learned
-This project helped me learn:
-
-Cross-platform development with .NET MAUI
-MVVM architecture and data binding
-API integration and async programming
-Multilingual app development
-Animation and user experience design
-Git and GitHub workflow
-
-🤝 Contributing
-Feel free to open issues or submit pull requests! Some ideas for future features:
-
-More languages (German, Italian, Portuguese)
-Different flower types to choose from
-Sound effects and music
-Difficulty-based scoring system
-Save game progress
-
-📄 License
-This project is open source and available under the MIT License.
-🙏 Acknowledgments
-
-Flower image created with AI generation tools
-Microsoft Translator API for translation services
-Datamuse API for word generation
-The .NET MAUI community for excellent documentation
-
-
-Made with 💖 and lots of cute pink styling!
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/flower-hangman-game.git
