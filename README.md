@@ -1,11 +1,11 @@
 ﻿# 🌸 Flower Hangman Game
 
-A cute multilingual word-guessing game built with .NET MAUI! Save your adorable kawaii flower by guessing the word before all the petals fall away.
+A cute multilingual word-guessing game built with .NET MAUI!
 
 ## 🎮 Features
 
 - 🌍 **Multi-language support** – Play in English, Spanish, or French with real translation
-- 🌸 **Adorable kawaii flower** – Watch cute animations as you play
+- 🌸 **Adorable flower** – Watch cute animations as you play
 - 💡 **Smart hint system** – Get helpful clues when you're stuck
 - 🎯 **Multiple difficulty levels** – Choose from Easy, Medium, and Hard words
 - 🏷️ **Category selection** – Pick from Animals, Food, Plants, or People
@@ -96,5 +96,3 @@ This project is open source and available under the MIT License.
 - The .NET MAUI community for excellent documentation
 
 ---
-
-Made with 💖 and lots of cute pink styling!
